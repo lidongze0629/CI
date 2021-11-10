@@ -1,4 +1,4 @@
-name: Build GraphScope Wheels on Linux
+name: Python3 test
 
 on:
   # Trigger the workflow on push or pull request, but only for the main branch
