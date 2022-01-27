@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-10.15]
-        python-version: ['3.6', '3.7', '3.8', '3.9']
+        python-version: ['3.7', '3.8', '3.9']
 
     steps:
     - uses: actions/checkout@v2
@@ -30,6 +30,7 @@ jobs:
     - name: Install Dependencies
       run: |
         python -c "import sys; print(sys.version)"
+        git clone -b master --single-branch --depth=1 https://github.com/7br/gstest.git
 
     - name: Setup tmate session
       if: true
