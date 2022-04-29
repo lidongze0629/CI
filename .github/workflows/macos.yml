@@ -14,16 +14,24 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04]
+        os: [macos-10.15]
+        python-version: ['3.8']
 
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: true
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
     - name: Install Dependencies
       run: |
         git clone -b master --single-branch --depth=1 https://github.com/7br/gstest.git
+        wget https://graphscope.oss-cn-beijing.aliyuncs.com/dependencies/wheel-macos-c833e372d42a31ba5d69b367c9eb6e62de317c62-3.8.zip
+        wget https://graphscope.oss-cn-beijing.aliyuncs.com/dependencies/wheel-macos-c833e372d42a31ba5d69b367c9eb6e62de317c62.zip
 
     - name: Setup tmate session
       if: true
