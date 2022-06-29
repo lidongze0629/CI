@@ -23,9 +23,10 @@ jobs:
 
     - name: Install Dependencies
       run: |
-        pushd $(brew --repo homebrew/core)
-        git checkout 2b411d925849478163647594b32fd237828cf720
-        popd
+        echo "xxx"
+        # pushd $(brew --repo homebrew/core)
+        # git checkout 2b411d925849478163647594b32fd237828cf720
+        # popd
 
     - name: Setup tmate session
       if: true
