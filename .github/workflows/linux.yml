@@ -14,18 +14,18 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-10.15]
+        os: [ubuntu-20.04]
 
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: true
 
-    - name: Install Dependencies
+    - name: build
       run: |
-        pushd $(brew --repo homebrew/core)
-        git checkout 2b411d925849478163647594b32fd237828cf720
-        popd
+        echo "${{ GITHUB.REF }}"
+        if [ "${{ GITHUB.REF }}" == "refs/heads/main" ];then echo "main process" && export xxx="debug"; fi
+        echo "${xxx}"
 
     - name: Setup tmate session
       if: false
