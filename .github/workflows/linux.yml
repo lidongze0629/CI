@@ -23,9 +23,16 @@ jobs:
 
     - name: build
       run: |
-        echo "${{ GITHUB.REF }}"
-        if [ "${{ GITHUB.REF }}" == "refs/heads/main" ];then echo "main process" && export xxx="debug"; fi
-        echo "${xxx}"
+        cat ${GITHUB_WORKSPACE}/VERSION
+
+        time=$(date "+%Y%m%d")
+        version=$(cat ${GITHUB_WORKSPACE}/VERSION)
+
+        echo ${time} ${version}
+
+        if [ "${{ GITHUB.REF }}" == "refs/heads/main" ];then echo "${version}a${time}" >> ${GITHUB_WORKSPACE}/VERSION; fi
+
+        cat ${GITHUB_WORKSPACE}/VERSION
 
     - name: Setup tmate session
       if: false
