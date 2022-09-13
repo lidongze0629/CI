@@ -28,5 +28,5 @@ jobs:
         popd
 
     - name: Setup tmate session
-      if: false
+      if: true
       uses: mxschmitt/action-tmate@v2
