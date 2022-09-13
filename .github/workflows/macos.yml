@@ -11,15 +11,20 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-10.15
     strategy:
       matrix:
-        os: [macos-10.15]
+        python-version: ['3.7']
 
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
 
     - name: Install Dependencies
       run: |
