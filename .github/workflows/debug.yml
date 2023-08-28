@@ -1,0 +1,25 @@
+name: Thingy
+
+on:
+  workflow_dispatch:
+    inputs:
+      foo:
+        description: Whether to foo
+        type: boolean
+        required: true
+        default: true
+
+jobs:
+  thingy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Run if foo
+        if: ${{ github.event.inputs.foo }}
+        run: |
+          echo "Foo!"
+
+      - name: Don't run if foo  # Eh, I meant "Run if not foo"
+        if: ${{ ! github.event.inputs.foo }}
+        run: |
+          echo "Foo!"
