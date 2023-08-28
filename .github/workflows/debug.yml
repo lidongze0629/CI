@@ -15,11 +15,11 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Run if foo
-        if: ${{ github.event.inputs.foo }}
+        if: ${{ github.event.inputs.foo == 'true'}}
         run: |
           echo "Foo!"
 
       - name: Don't run if foo  # Eh, I meant "Run if not foo"
-        if: ${{ ! github.event.inputs.foo }}
+        if: ${{ github.event.inputs.foo != 'true'}}
         run: |
           echo "Foo!"
