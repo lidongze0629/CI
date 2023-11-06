@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-10.15
+    runs-on: macos-12
     strategy:
       matrix:
         python-version: ['3.7']
@@ -21,16 +21,16 @@ jobs:
       with:
         submodules: true
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+    #- name: Set up Python
+      #uses: actions/setup-python@v2
+      #with:
+        #python-version: ${{ matrix.python-version }}
 
-    - name: Install Dependencies
-      run: |
-        pushd $(brew --repo homebrew/core)
-        git checkout 2b411d925849478163647594b32fd237828cf720
-        popd
+    #- name: Install Dependencies
+      #run: |
+        #pushd $(brew --repo homebrew/core)
+        #git checkout 2b411d925849478163647594b32fd237828cf720
+        #popd
 
     - name: Setup tmate session
       if: false
