@@ -16,13 +16,13 @@ jobs:
       matrix:
         python-version: ['3.11']
 
-    steps:
-    - uses: actions/checkout@v2
+  steps:
+    - uses: actions/checkout@v3
       with:
         submodules: true
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -42,9 +42,8 @@ jobs:
 
     - name: clone
       run: |
-        brew update || true
-
         git clone https://github.com/alibaba/GraphScope.git
+
         cd GraphScope
         python3 gsctl.py install-deps dev || true
         python3 gsctl.py install-deps dev
