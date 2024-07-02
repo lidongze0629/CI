@@ -36,5 +36,5 @@ jobs:
         echo ${time} ${version}
 
     - name: Setup tmate session
-      if: true
+      if: false
       uses: mxschmitt/action-tmate@v2
