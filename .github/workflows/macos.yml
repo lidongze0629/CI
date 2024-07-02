@@ -38,7 +38,7 @@ jobs:
         sudo mkdir /opt/graphscope
         sudo chown -R $(id -u):$(id -g) /opt/graphscope
 
-        python3 -m pip install click
+        python3 -m pip install click packaging
 
     - name: clone
       run: |
@@ -51,5 +51,5 @@ jobs:
         echo "export PATH=/usr/local/opt/coreutils/libexec/gnubin:\$PATH" >> ~/.graphscope_env
 
     - name: Setup tmate session
-      if: true
+      if: always()
       uses: mxschmitt/action-tmate@v2
