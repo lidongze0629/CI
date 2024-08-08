@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-12
+    runs-on: macos-14
     strategy:
       matrix:
         python-version: ['3.11']
@@ -27,6 +27,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install Dependencies
+      if: false
       run: |
         brew update || true
         brew install bash coreutils
@@ -42,13 +43,13 @@ jobs:
 
     - name: clone
       run: |
-        git clone https://github.com/alibaba/GraphScope.git
+        git clone -b develop --depth=1 https://github.com/lidongze0629/GraphScope.git
 
-        cd GraphScope
-        python3 gsctl.py install-deps dev || true
-        python3 gsctl.py install-deps dev
+        # cd GraphScope
+        # python3 gsctl.py install-deps dev || true
+        # python3 gsctl.py install-deps dev
 
-        echo "export PATH=/usr/local/opt/coreutils/libexec/gnubin:\$PATH" >> ~/.graphscope_env
+        # echo "export PATH=/usr/local/opt/coreutils/libexec/gnubin:\$PATH" >> ~/.graphscope_env
 
     - name: Setup tmate session
       if: always()
