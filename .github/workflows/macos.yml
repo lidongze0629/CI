@@ -11,8 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
-    if: false
+    runs-on: macos-12
     strategy:
       matrix:
         python-version: ['3.11']
@@ -40,7 +39,7 @@ jobs:
         sudo mkdir /opt/graphscope
         sudo chown -R $(id -u):$(id -g) /opt/graphscope
 
-        python3 -m pip install click packaging
+        python3 -m pip install click
 
     - name: clone
       run: |
