@@ -1,4 +1,4 @@
-name: Build GraphScope Wheels on Linux
+name: Build GraphScope Wheels on MacOS
 
 on:
   # Trigger the workflow on push or pull request, but only for the main branch
@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-12
+    runs-on: macos-13
     strategy:
       matrix:
         python-version: ['3.11']
@@ -27,7 +27,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install Dependencies
-      if: false
+      if: true
       run: |
         brew update || true
         brew install bash coreutils
