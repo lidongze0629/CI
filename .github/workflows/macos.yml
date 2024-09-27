@@ -56,5 +56,5 @@ jobs:
         # echo "export PATH=/usr/local/opt/coreutils/libexec/gnubin:\$PATH" >> ~/.graphscope_env
 
     - name: Setup tmate session
-      if: ${{ matrix.python-version == "3.11" }}
+      if: ${{ matrix.python-version == '3.11' }}
       uses: mxschmitt/action-tmate@v2
