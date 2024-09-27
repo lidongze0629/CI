@@ -14,7 +14,7 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        python-version: ['3,8', '3.9', '3.10', '3.11']
+        python-version: ['3.9', '3.10', '3.11']
 
     steps:
     - uses: actions/checkout@v4
@@ -56,5 +56,5 @@ jobs:
         # echo "export PATH=/usr/local/opt/coreutils/libexec/gnubin:\$PATH" >> ~/.graphscope_env
 
     - name: Setup tmate session
-      if: ${{ matrix.python-version == '3.11' }}
+      if: ${{ matrix.python-version == '3.9' }}
       uses: mxschmitt/action-tmate@v2
