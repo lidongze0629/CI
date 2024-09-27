@@ -31,5 +31,5 @@ jobs:
         git clone -b develop --depth=1 https://github.com/lidongze0629/GraphScope.git
 
     - name: Setup tmate session
-      if: true
+      if: false
       uses: mxschmitt/action-tmate@v2

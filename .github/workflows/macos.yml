@@ -14,20 +14,24 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        python-version: ['3.11']
+        python-version: ['3,8', '3.9', '3.10', '3.11']
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         submodules: true
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Print Python Version
+      run: |
+        python3 -c 'import sys; print(sys.version_info[:])'
+
     - name: Install Dependencies
-      if: true
+      if: false
       run: |
         brew update || true
         brew install bash coreutils
@@ -52,5 +56,5 @@ jobs:
         # echo "export PATH=/usr/local/opt/coreutils/libexec/gnubin:\$PATH" >> ~/.graphscope_env
 
     - name: Setup tmate session
-      if: always()
+      if: ${{ matrix.python-version == "3.11" }}
       uses: mxschmitt/action-tmate@v2
